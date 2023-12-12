@@ -1,3 +1,5 @@
+/*    Global Styles       */
+
 :root{
     --whitetext:#f1f1f1;
     --subtext:#AAAAAA;
@@ -24,7 +26,14 @@ body{
     justify-content: center;
 }
 
+
+
+/*    Navbar section       */
+
+
+
 header{
+    z-index: 1000;
     background-color: black;
     margin:0 16px;
     position: fixed;
@@ -42,12 +51,10 @@ header>*{
     cursor: pointer;
 }
 
-
 #nav-start{
     display: flex;
     width: 15%;
 }
-
 
 #sidebar-icon{
     font-size: 1.3rem;
@@ -135,24 +142,30 @@ header>*{
     margin-right: 15px;
 }
 
+/*    Main section       */
+
 main{
-    cursor: pointer;
+    margin-top: 60px;
+    display: flex;
 }
 
+
+
+/*    Sidebar       */
+
+
+
 #sidebar{
-    position: fixed;
-    top: 76px;
-    z-index: -1;
+    z-index: 999;
     color: var(--whitetext);
     font-size: var(--smalltext);
 }
-
 
 .sb-box{
     margin: 5px 0;
     cursor: pointer;
     justify-content: flex-start;
-    width: 180px;
+    width: 185px;
     height: 38px;
     border-radius: 5px;
 }
@@ -165,6 +178,11 @@ main{
     padding: 10px 22px 10px 10px;
 }
 
+.sb-box p{
+    text-wrap: nowrap;
+    text-overflow:ellipsis;
+}
+
 .sb-box:hover{
     background-color:rgba(255, 255, 255, 0.34);
 }
@@ -174,21 +192,54 @@ main{
     color: white;
 }
 
-hr{
-    margin: 15px 0;
+.you-sidebar{
+    padding: 0 0 0 13px;
+     font-size: 1rem; 
+     font-weight: 800;
 }
 
-#homepage{
-    
-    margin: 0 0 0 16px;
-    margin-left: 15%;
+hr{
+    margin: 15px 5px;
 }
+
+
+.channels img{
+    border-radius: 50%;
+}
+
+.channels-hide{
+    display: none;
+}
+
+.show-more,.show-less{
+    font-size: 0.95rem; 
+    font-weight: 600;
+}
+
+.h3-sidebar{
+    margin:20px 0 7px 12px;
+}
+
+
+/*    Home page excluding Sidebar       */
+
+
+
+#homepage{
+    margin: 0 0 0 16px;
+}
+
+
+
+/*    Features section       */
+
+
+
 
 #features-sec{
     padding: 16px 0 10px 0;
-    background-color: black;
     position: fixed;
-    top: 60px;
+    background-color: black;
     display: flex;
     overflow:hidden;
 }
@@ -221,15 +272,38 @@ hr{
     color: black;
 }
 
+
+
+
+/*    Video section       */
+
+
+
+/* 
 #videos-sec{
-    position: relative;
-    top: 120px;
-    display: grid;
-    grid-template-columns: repeat(3,33%) ;
-    gap: 30px 0;
     z-index: -1;
+    positio: absolute;
+    top: 120px;
+    margin-left: 15%;
+    display: grid;
+    grid-template-columns: repeat(3,33.1%) ;
+    gap: 30px 1px;
+} */
+#videos-sec{
+    margin-top: 70px;
+    width: 100%;
+    z-index: -1;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 
+.videos{
+    margin: 0 1px 30px 0;
+    width: 33.2%;
+    max-width: 385px;
+    min-width: 335px;
+}
 
 .ad-bottom{
     margin-left: 10px;
@@ -240,8 +314,10 @@ hr{
 }
 
 #thumbnail img{
-    max-width: 97%;
-    border-radius: 10px;
+    width: 97%;
+    min-width: 320px;
+    max-width: 365px;
+    border-radius: 26px;
     padding:10px;
 }
 
@@ -255,11 +331,15 @@ hr{
 }
 
 #title_info{
+    height: 45px;
+    overflow:hidden;
+    text-overflow: ellipsis;
     display: flex;
     justify-content: space-between;
 }
 
 #title_info h5{
+    line-height: 1.4;
     font-size: var(--mediumtext);
 }
 
@@ -294,3 +374,50 @@ hr{
     margin: 0 4px;  
 }
 
+
+
+
+/*    Shorts section       */
+
+
+
+#shorts-sec{
+    z-index: -1;
+}
+
+#shorts-heading{
+    display: flex;
+    margin: 30px 0;
+}
+
+#shorts-heading img{
+    padding: 0 15px;
+}
+
+#shorts-video-sec{
+
+}
+
+.shorts-videos{
+    width: 220px;
+}
+
+.shorts-videos img{
+    max-width: ;
+    width: 100%;
+}
+
+.short-vid-bottom{
+    margin: 10px 0;
+    height: 40px;
+    padding: 0 5px;
+    line-height: 1.3;
+    font-size: 1.2rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.short-vid-bottom p{
+    font-size: 0.9rem;
+    color: var(--subtext);
+}
