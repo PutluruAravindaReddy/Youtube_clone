@@ -73,7 +73,9 @@ header>*{
     height: 44px;
     display: flex;
     flex-direction: row;
-    width: 650px;
+    min-width: 250px;
+    width: 40%;
+    max-width: 650px;
 }
 
 #nav-center form{
@@ -157,6 +159,7 @@ main{
 
 
 #sidebar{
+    width: 200px;
     z-index: 999;
     color: var(--whitetext);
     font-size: var(--smalltext);
@@ -169,6 +172,10 @@ main{
     width: 185px;
     height: 38px;
     border-radius: 5px;
+    text-decoration: none;
+    color: var(--whitetext);
+    text-wrap: nowrap;
+    text-overflow:ellipsis;
 }
 
 .sb-box::after{
@@ -179,10 +186,6 @@ main{
     padding: 10px 22px 10px 10px;
 }
 
-.sb-box p{
-    text-wrap: nowrap;
-    text-overflow:ellipsis;
-}
 
 .sb-box:hover{
     background-color:rgba(255, 255, 255, 0.34);
@@ -244,6 +247,10 @@ hr{
     color: var(--subtext);
 }
 
+.sb-hide{
+    display: none;
+}
+
 /*    Home page excluding Sidebar       */
 
 
@@ -265,12 +272,15 @@ hr{
     background-color: black;
     display: flex;
     overflow:hidden;
+    
 }
 
 .features{
     cursor: pointer;
     text-wrap: nowrap;
     font-size: var(--smalltext);
+    color: var(--whitetext);
+    border: none;
     margin: 0 5px;
     padding: 7px 12px;
     border-radius: 5px;
@@ -279,6 +289,11 @@ hr{
 
 .features:hover{
     background-color:rgba(255, 255, 255, 0.34);
+}
+
+.features:active{
+    background-color: white;
+    color: black;
 }
 
 .activef{
@@ -290,11 +305,11 @@ hr{
     color: black;
 }
 
-.features:active{
-    background-color: white;
-    color: black;
-}
 
+
+.filter-options::-webkit-scrollbar{
+    display: none;
+}
 
 
 
@@ -342,7 +357,8 @@ hr{
     min-width: 310px;
     max-width: 370px;
     border-radius: 26px;
-    padding:10px;
+    padding:0 10px;
+    margin: -15px 0;
 }
 
 .video-sec-bottom{
@@ -369,7 +385,7 @@ hr{
 }
 
 .title_info img{
-    padding:0 0 0 15px;
+    margin:0 0 0 5px;
 }
 
 .channelname_verifysym{
@@ -490,4 +506,24 @@ hr{
 
 .v-sec-afshorts{
     margin-top: 30px;
+}
+
+
+@media(max-width:420px){
+    .videos-sec{
+        margin-top: 70px;
+        width: 100%;
+        z-index: -1;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    
+    .videos{
+        cursor: pointer;
+        margin: 0 1px 30px 0;
+        width: 33.2%;
+        max-width: 390px;
+        min-width: 330px;
+    }
 }
