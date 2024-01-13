@@ -70,45 +70,45 @@
 
 
 
-const VideoCardContainer=document.querySelector(".videos-sec");
-let api_key="AIzaSyCS2uu78o1-7swd87jnlDo4uk2U1sLfp4g";
-let video_http="https://www.googleapis.com/youtube/v3/videos?";
-let channel_http="https://www.googleapis.com/youtube/v3/channels?";
+const VideoCardContainer = document.querySelector(".videos-sec");
+let api_key = "AIzaSyCS2uu78o1-7swd87jnlDo4uk2U1sLfp4g";
+let video_http = "https://www.googleapis.com/youtube/v3/videos?";
+let channel_http = "https://www.googleapis.com/youtube/v3/channels?";
 
 
 fetch(video_http + new URLSearchParams({
-    key:api_key,
-    part:'snippet',
-    chart:'mostPopular',
-    maxResults:91,
-    regionCode:'IN',
+    key: api_key,
+    part: 'snippet',
+    chart: 'mostPopular',
+    maxResults: 91,
+    regionCode: 'IN',
 }))
 
-.then(res => res.json())
-.then(data => {
-    console.log(data);
-    data.items.forEach(item =>{
-        getChannelIcon(item);
+    .then(res => res.json())
+    .then(data => {
+        console.log(data);
+        data.items.forEach(item => {
+            getChannelIcon(item);
+        })
     })
-})
 
-.catch(err => console.log(err));
+    .catch(err => console.log(err));
 
 const getChannelIcon = (video_data) => {
     fetch(channel_http + new URLSearchParams({
-        key:api_key,
-        part:'snippet',
-        id:video_data.snippet.channelId
+        key: api_key,
+        part: 'snippet',
+        id: video_data.snippet.channelId
     }))
-    .then(res => res.json())
-    .then(data =>{
-        video_data.channelThumbnail = data.items[0].snippet.thumbnails.default.url;
-        makeVideoCard(video_data);
-    })
+        .then(res => res.json())
+        .then(data => {
+            video_data.channelThumbnail = data.items[0].snippet.thumbnails.default.url;
+            makeVideoCard(video_data);
+        })
 }
 
-const makeVideoCard=(data) =>{
-    VideoCardContainer.innerHTML+=`
+const makeVideoCard = (data) => {
+    VideoCardContainer.innerHTML += `
     <div class="videos" onclick="location.href='https://youtube.com/watch?v=${data.id}'">
         <div class="thumbnail">
             <img src="${data.snippet.thumbnails.high.url}" alt="">
@@ -140,7 +140,6 @@ var sbclick = document.getElementsByClassName("sb-box");
 var showmore = document.querySelector(".show-more");
 var showless = document.querySelector(".show-less");
 var remchannels = document.getElementsByClassName("extra-channels");
-let sidebar=document.getElementById("sidebar");
 
 
 
@@ -165,10 +164,10 @@ for (let i = 0; i < sbclick.length; i++) {
 }
 
 showmore.addEventListener("click", function () {
-        for (let i = 0; i < remchannels.length; i++) {
-            remchannels[i].classList.remove("channels-hide");
-        }
-        showmore.classList.add("channels-hide");
+    for (let i = 0; i < remchannels.length; i++) {
+        remchannels[i].classList.remove("channels-hide");
+    }
+    showmore.classList.add("channels-hide");
 });
 
 showless.addEventListener("click", function () {
@@ -179,37 +178,31 @@ showless.addEventListener("click", function () {
     showless.classList.add("channels-hide");
 });
 
-
-sidebar.addEventListener("click",function(){
-    if(sidebar.classList.contains("hide")){
-        sidebar.classList.remove("hide");
-    }
-    else{
-        sidebar.classList.add("hide");
-    }
-})
-
-if(sidebar){
-    if(sidebar.classList.contains("hide")){
-        sidebar.classList.remove("hide");
-    }
-    else{
-        sidebar.classList.add("hide");
+function toggleSidebar() {
+    var sidebar = document.getElementById('sidebar');
+    if (sidebar.style.display === 'none' || sidebar.style.display === '') {
+        sidebar.style.display = 'block';
+    } else {
+        sidebar.style.display = 'none';
     }
 }
 
+// Function to check the screen width and hide/show sidebar accordingly
+function checkScreenWidth() {
+    var screenWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+    var sidebar = document.getElementById('sidebar');
 
-// window.addEventListener('scroll', function() {
-//     // Get the features section and videos section
-//     var featuresSection = document.getElementById('features-sec');
-//     var videosSection = document.getElementById('videos-sec');
+    if (screenWidth < 440) {
+        sidebar.style.display = 'none'; // Automatically hide the sidebar for small screens
+    } else {
+        sidebar.style.display = 'block'; // Show the sidebar for larger screens
+    }
+}
 
-//     // Get the position of the features section relative to the viewport
-//     var featuresSectionRect = featuresSection.getBoundingClientRect();
+// Attach the toggleSidebar function to a button click event
+var sidebarToggleBtn = document.getElementById('sidebar-icon');
+sidebarToggleBtn.addEventListener('click', toggleSidebar);
 
-//     // Check if the features section is in view
-//     var isFeaturesInViewport = featuresSectionRect.top < window.innerHeight && featuresSectionRect.bottom >= 0;
-
-//     // Add or remove the "active-section" class based on whether the features section is in view
-//     videosSection.classList.toggle('active-section', isFeaturesInViewport);
-// });
+// Check the screen width on page load and on window resize
+window.addEventListener('load', checkScreenWidth);
+window.addEventListener('resize', checkScreenWidth);
