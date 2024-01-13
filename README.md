@@ -6,13 +6,14 @@ This repository contains two versions of a simple YouTube clone built with HTML,
 
 1. **YouTube Clone with API:**
    - This version utilizes the YouTube API for video playback. It allows users to search and play YouTube videos directly within the clone.
-   
+
    - **Demo:** [YouTube Clone with API](https://putluruaravindareddy.github.io/Youtube_clone/)
 
 2. **YouTube Clone without API:**
    - This version does not use any external API for video playback. It provides a simple interface but does not support video playback functionality.
+   
+    - **Demo:** [YouTube Clone without API](https://putluruaravindareddy.github.io/Youtube_clone/indexnoapi.html)
 
- - **Demo:** [YouTube Clone without API](https://putluruaravindareddy.github.io/Youtube_clone/indexnoapi.html)
 Both versions are intended for learning and personal project purposes.
 
 ## Features
